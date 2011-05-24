@@ -355,6 +355,9 @@ static QByteArray qtTypeName(const QString &signature, const QDBusIntrospection:
         if (!qttype.isEmpty())
             return qttype.toLatin1();
 
+        if(signature == "a{sv}")
+            return "QVariantMap";
+
         fprintf(stderr, "Got unknown type `%s'\n", qPrintable(signature));
         fprintf(stderr, "You should add <annotation name=\"%s\" value=\"<type>\"/> to the XML description\n",
                 qPrintable(annotationName));
